@@ -30,12 +30,13 @@ namespace AsynchronousMultithread.TaskFormApp
 
         private async void BtnReadFile_Click(object sender, EventArgs e)
         {
-            // string data = ReadFile();
+            //string data = ReadFile();
 
             string data = string.Empty;
-            Task<string> read = ReadFileAsync();
+            //Task<string> read = ReadFileAsync();
+            Task<string> read = ReadFileAsync2();
 
-            richTextBox2.Text = await new HttpClient().GetStringAsync("https://www.youtube.com/");
+            richTextBox2.Text = await new HttpClient().GetStringAsync("https://www.google.com/");
 
             data = await read;
 
@@ -59,6 +60,7 @@ namespace AsynchronousMultithread.TaskFormApp
             return data;
         }
 
+        // If other work is to be done after the asynchronous method is called, async-await can be used
         private async Task<string> ReadFileAsync()
         {
             string data = string.Empty;
@@ -66,11 +68,21 @@ namespace AsynchronousMultithread.TaskFormApp
             {
                 Task<string> myTask = s.ReadToEndAsync();
 
+                await Task.Delay(5000);
 
                 data = await myTask;
 
                 return data;
             }
+        }
+
+        // If no other work will be done after the asynchronous method is called, it can be returned directly.
+        private Task<string> ReadFileAsync2()
+        {
+            StreamReader s = new StreamReader("names.txt");
+            
+            return s.ReadToEndAsync();
+            
         }
 
     }
