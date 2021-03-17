@@ -41,6 +41,16 @@ namespace AsynchronousMultithread.TaskFormApp
             data = await read;
 
             richTextBox1.Text = data;
+
+            //var site1 = new HttpClient().GetAsync("https://www.youtube.com/").Result.Content.ReadAsStringAsync();
+            //var site2 = new HttpClient().GetAsync("https://www.google.com/").Result.Content.ReadAsStringAsync();
+
+            //var contents = Task.WhenAll(site1, site2);
+            //var sites = await contents;
+
+            //richTextBox2.Text = sites[1];
+
+            //richTextBox1.Text = sites[0];
         }
 
         private void BtnCounter_Click(object sender, EventArgs e)

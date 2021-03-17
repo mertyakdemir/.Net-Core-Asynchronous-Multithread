@@ -74,6 +74,7 @@ namespace AsynchronousMultithread.TaskConsoleApp
             Console.WriteLine($"{taskList.First().Result.Url} - {taskList.First().Result.Length}");
             */
 
+            // WaitAny
             Console.WriteLine("Before the WaitAny method");
             var firstDataIndex = Task.WaitAny(taskList.ToArray());
 
